@@ -1,0 +1,18 @@
+# Pipe line syntax for CI/CD
+
+pipeline {
+    agent any
+
+    stages {
+        stage('gitscm') {
+            steps {
+                git branch: 'main', url: 'https://github.com/shaikmubeen/flask-app.git'
+            }
+        }
+        stage('flask') {
+            steps {
+                sh "python3 app.py"
+            }
+        }
+    }
+}
